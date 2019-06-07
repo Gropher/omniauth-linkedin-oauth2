@@ -47,7 +47,7 @@ module OmniAuth
       end
 
       def raw_info
-        @raw_info ||= access_token.get(profile_endpoint).parsed
+        @raw_info ||= access_token.get(profile_endpoint, headers: { "X-RestLi-Protocol-Version" => "2.0.0" }).parsed
       end
 
       private
@@ -60,7 +60,7 @@ module OmniAuth
       end
 
       def fetch_email_address
-        @email_address_response ||= access_token.get(email_address_endpoint).parsed
+        @email_address_response ||= access_token.get(email_address_endpoint, headers: { "X-RestLi-Protocol-Version" => "2.0.0" }).parsed
       end
 
       def parse_email_address
